@@ -32,7 +32,8 @@
 	// "forwardPorts": [],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "git pull; cargo install --locked cargo-outdated"
+	"postCreateCommand": "git pull"
+	// "postCreateCommand": "git pull; cargo install --locked cargo-outdated"
 	// "postCreateCommand": "rustc --version",
 
 	// Configure tool-specific properties.
