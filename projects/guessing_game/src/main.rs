@@ -7,7 +7,8 @@ fn main() {
 
     let v = vec![1, 2, 3];
 
-    loop {
+    let mut quit: bool = false;
+    while !quit {
         let chosen_number = rand::thread_rng().gen_range(1..=10);
 
         for _ in &v {
@@ -27,9 +28,13 @@ fn main() {
                 Ordering::Greater => println!("Too big!,  for '{guess_number}'"),
                 Ordering::Equal => {
                     println!("You win!");
+                    quit = true;
                     break;
                 }
             }
+        }
+        if !quit {
+            println!("Reguess a new number!");
         }
     }
 }
