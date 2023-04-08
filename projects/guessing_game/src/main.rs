@@ -4,25 +4,32 @@ use std::io;
 
 fn main() {
     println!("Guess the number!");
-    println!("Please input your guess.");
 
-    let mut guess = String::new();
+    let v = vec![1, 2, 3];
 
-    let chosen_number = rand::thread_rng().gen_range(1..=10);
+    loop {
+        let chosen_number = rand::thread_rng().gen_range(1..=10);
 
-    io::stdin()
-        .read_line(&mut guess)
-        .expect("Failed to read line");
+        for _ in &v {
+            let mut guess = String::new(); // MUST BE INSIDE THE LOOP
 
-    let guess_number: i32 = match guess.trim().parse() {
-        Ok(num) => num,
-        Err(_) => -1,
-    };
+            println!("Please input your guess.");
+            io::stdin()
+                .read_line(&mut guess)
+                .expect("Failed to read line");
+            let guess_number: i32 = match guess.trim().parse() {
+                Ok(num) => num,
+                Err(_) => -1,
+            };
 
-    match guess_number.cmp(&chosen_number) {
-        Ordering::Less => println!("Too small!"),
-        Ordering::Greater => println!("Too big!"),
-        Ordering::Equal => println!("You win!"),
+            match guess_number.cmp(&chosen_number) {
+                Ordering::Less => println!("Too small!, for '{guess_number}'"),
+                Ordering::Greater => println!("Too big!,  for '{guess_number}'"),
+                Ordering::Equal => {
+                    println!("You win!");
+                    break;
+                }
+            }
+        }
     }
 }
-
