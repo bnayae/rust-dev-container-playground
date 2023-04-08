@@ -34,7 +34,8 @@
 	// "forwardPorts": [],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "git pull"
+	"postStartCommand": "git config --global --add safe.directory /workspaces/rust-dev-container-playground && git pull"
+	// "postCreateCommand": "git pull"
 	// "postCreateCommand": "git pull; cargo install --locked cargo-outdated"
 	// "postCreateCommand": "rustc --version",
 
