@@ -23,7 +23,8 @@
 			"extensions":[
 				"donjayamanne.githistory",
 				"mhutchie.git-graph",
-				"eamodio.gitlens"
+				"eamodio.gitlens",
+				"GitHub.vscode-pull-request-github"
 			]
 		}
 	},
