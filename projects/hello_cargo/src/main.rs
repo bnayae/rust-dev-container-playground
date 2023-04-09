@@ -1,10 +1,27 @@
+use chrono::{Timelike, Utc};
+// use std::time::SystemTime;
+
 fn main() {
     println!("Hello, cargo!");
 
+    /***************** START: shadow sample *******************/
+    let now = Utc::now();
+    let shadow: u32 = 10 * 10;
+    println!("shadow = {shadow}");
+    let shadow = shadow * now.second();
+    // let shadow = shadow * SystemTime::now().;
+    println!("shadow = {shadow}");
+    {
+        let shadow = now.minute();
+        // let shadow = OffsetDateTime::now_utc().month();
+        println!("shadow = {shadow}");
+    }
+    println!("shadow = {shadow}");
+    /***************** END: shadow sample *******************/
+
     let vector = vec!["a", "b", "c"];
     println!("For loop");
-    for x in vector {
-        // consume vector, owned x
+    for x in &vector {
         println!("\tItem = {x}");
     }
 
@@ -18,7 +35,6 @@ fn main() {
     // https://www.youtube.com/watch?v=yozQ9C69pNs&list=PLqbS7AVVErFiWDOAVrPt7aYmnuuOLYvOa&index=3
     println!("For loop + .iter");
     for x in vector.into_iter() {
-        // borrows vector, & to x
         println!("\tItem = {x}");
     }
 
