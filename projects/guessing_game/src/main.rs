@@ -18,9 +18,12 @@ fn main() {
             io::stdin()
                 .read_line(&mut guess)
                 .expect("Failed to read line");
-            let guess_number: i32 = match guess.trim().parse() {
+            // let guess_number: i32 = guess.trim().parse().expect("Invalid input");
+            let guess_number = guess.trim().parse();
+            // switch into shadow variable
+            let guess_number: i32 = match guess_number {
                 Ok(num) => num,
-                Err(_) => -1,
+                Err(_) => continue,
             };
 
             match guess_number.cmp(&chosen_number) {
@@ -34,6 +37,7 @@ fn main() {
             }
         }
         if !quit {
+            println!("The number was {chosen_number}");
             println!("Reguess a new number!");
         }
     }
