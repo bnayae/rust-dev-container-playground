@@ -1,8 +1,13 @@
 use std::cmp::max;
 
 fn main() {
-    let r = first_word_with_bug("simply dummy text of the printing");
+
+    let r = first_word("simply dummy text of the printing");
     println!("first ok: '{r}'");
+    // let r = first_word_with_bug(" simply dummy text of the printing");
+    let r = first_word(" simply dummy text of the printing");
+    println!("first ok: '{r}'");
+
     let r = take_after("simply dummy text of the printing", "dummy");
     println!("middle: '{r}'");
     let r = take_after("dummy", "simply dummy text of the printing");
@@ -54,13 +59,11 @@ fn change(v: &mut String) {
 }
 
 
-
-fn first_word_with_bug (source: &str) -> &str {
-    let source_len = source.len();
-    for i in 0..limit {
-        let current = &source[i];
-        if current == ' ' {
-            return &source[..current - 1];
+fn first_word (source: &str) -> &str {
+    let enumerator = source.chars().into_iter().enumerate();
+    for (i, c) in enumerator {
+        if c == ' ' {
+            return &source[..i];
         }
     }
     &source[..]
