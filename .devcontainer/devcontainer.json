@@ -27,7 +27,10 @@
 				"eamodio.gitlens",
 				"GitHub.vscode-pull-request-github",
 				"ms-vscode.remote-repositories",
-				"vadimcn.vscode-lldb" // debugger
+				"vadimcn.vscode-lldb", // debugger
+				"serayuzgur.crates",
+				"tamasfe.even-better-toml",
+				"Swellaby.vscode-rust-test-adapter"
 			]
 		}
 	},
