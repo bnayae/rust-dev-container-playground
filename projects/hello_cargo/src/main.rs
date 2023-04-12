@@ -1,31 +1,27 @@
 use chrono::{Timelike, Utc};
 // use std::time::SystemTime;
 
-
-
 fn another_function(x: i32) -> i32 {
     if x % 2 == 0 {
         return x * 3;
-    }
-    else if x % 3 == 0 {
+    } else if x % 3 == 0 {
         return x * 4;
-    }
-    else {
+    } else {
         return x * 5;
     }
 }
 
-fn main() {    
-let x = ['H', 'e', 'l', 'l', 'o'];
-let y = x;
-for c in x {
-    print!("{c}");
-}
-println!();
-for c in y {
-    print!("{c}");
-}
-println!();
+fn main() {
+    let x = ['H', 'e', 'l', 'l', 'o'];
+    let y = x;
+    for c in x {
+        print!("{c}");
+    }
+    println!();
+    for c in y {
+        print!("{c}");
+    }
+    println!();
 
     let x = String::from("Hello");
     let mut y = x.clone();
@@ -43,16 +39,16 @@ println!();
 
     println!("Hello, cargo!");
 
-// // statement
-// let val = 1;
-// // let val = let sub = 1; // NOT VALID
-// // value of the inner expression get bound to the outer statement
-// let y = {
-//     let x = 3;
-//     x + 1 // Expressions do not include ending semicolons
-// };
+    // // statement
+    // let val = 1;
+    // // let val = let sub = 1; // NOT VALID
+    // // value of the inner expression get bound to the outer statement
+    // let y = {
+    //     let x = 3;
+    //     x + 1 // Expressions do not include ending semicolons
+    // };
 
-// println!(val);
+    // println!(val);
 
     let a = [1, 2, 3, 4, 5];
     // let a: [i32; 5] = [1, 2, 3, 4, 5];
@@ -60,8 +56,14 @@ println!();
     let second = a[1];
     println!("first = {first}, second = {second}");
 
+    // // initial array with same repeatative value
     // let b = [3; 5];
-    // let b = [3, 3, 3, 3, 3];
+    // // let b = [3, 3, 3, 3, 3];
+
+    // Because the enumerate method returns a tuple
+    for (index, &_) in [0; 10].iter().enumerate() {
+        println!("index! = {index}");
+    }
 
     let tup: (i32, f64, u8) = (500, 6.4, 1);
     // deconstruct
@@ -72,27 +74,27 @@ println!();
     let f = -2.1;
     println!("floating {f}");
 
-    let a:u8 = u8::MAX; // 255 max value
-    /****************** START: overflow ******************/
+    let a: u8 = u8::MAX; // 255 max value
+                         /****************** START: overflow ******************/
     // let b:u8 = a + 1; // panic
     // allow wrapping intentionally
-    let b:u8 = a.wrapping_add(1); // a + 1; 
+    let b: u8 = a.wrapping_add(1); // a + 1;
     println!("b = {b}");
     // try add (into tuple)
-    let (b1, b2): (u8, bool) = a.overflowing_add(1); // a + 1; 
+    let (b1, b2): (u8, bool) = a.overflowing_add(1); // a + 1;
     println!("overflowed = {b2}, {b1}");
     // check into an option
-    let b:Option<u8> = (a - 1).checked_add(1); // a - 1 + 1; 
+    let b: Option<u8> = (a - 1).checked_add(1); // a - 1 + 1;
     let r = match b {
         Some(s) => s.to_string(),
-        None => "NONE".to_string() 
+        None => "NONE".to_string(),
     };
     println!("r = {r}");
     // check into an option
-    let b:Option<u8> = a.checked_add(1); // a + 1; 
+    let b: Option<u8> = a.checked_add(1); // a + 1;
     let r = match b {
         Some(s) => s.to_string(),
-        None => "NONE".to_string() 
+        None => "NONE".to_string(),
     };
     println!("r = {r}");
     /****************** END: overflow ******************/
