@@ -1,6 +1,8 @@
 use std::cmp::max;
 
 fn main() {
+    let r = first_word_with_bug("simply dummy text of the printing");
+    println!("first ok: '{r}'");
     let r = take_after("simply dummy text of the printing", "dummy");
     println!("middle: '{r}'");
     let r = take_after("dummy", "simply dummy text of the printing");
@@ -51,6 +53,19 @@ fn change(v: &mut String) {
     v.push_str(" there");
 }
 
+
+
+fn first_word_with_bug (source: &str) -> &str {
+    let source_len = source.len();
+    for i in 0..limit {
+        let current = &source[i];
+        if current == ' ' {
+            return &source[..current - 1];
+        }
+    }
+    &source[..]
+}
+
 fn take_after<'a> (source: &'a str, criteria: &str) -> &'a str {
     let criteria_len = criteria.len();
     let source_len = source.len();
@@ -64,15 +79,3 @@ fn take_after<'a> (source: &'a str, criteria: &str) -> &'a str {
     }
     ""
 }
-
-// fn first_word(s: &String) -> &str {
-//     let bytes = s.as_bytes();
-
-//     for (i, &item) in bytes.iter().enumerate() {
-//         if item == b' ' {
-//             return &s[0..i];
-//         }
-//     }
-
-//     &s[..]
-// }
