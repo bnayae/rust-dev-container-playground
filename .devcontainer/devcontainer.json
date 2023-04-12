@@ -26,7 +26,8 @@
 				"mhutchie.git-graph",
 				"eamodio.gitlens",
 				"GitHub.vscode-pull-request-github",
-				"ms-vscode.remote-repositories"
+				"ms-vscode.remote-repositories",
+				"vadimcn.vscode-lldb" // debugger
 			]
 		}
 	},
